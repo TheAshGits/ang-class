@@ -37,7 +37,7 @@ library.add(faTrashAlt, faCheckSquare, faSquare);
     HttpClientModule,
     AppRoutingModule,
     CookieModule.forRoot(),
-    NgbModule.forRoot(),
+    NgbModule,
     FontAwesomeModule,
   ],
   providers: [AuthService, TodoService, IsLoggedInGuard],
