@@ -12,15 +12,13 @@ import { TodoComponent } from './todo/todo.component';
 import { TodoService } from './shared/services/todo.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faTrashAlt, faSquare, faCheckSquare } from '@fortawesome/free-regular-svg-icons';
 import { IsLoggedInGuard } from './shared/guards/is-logged-in.guard';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { CookieModule } from 'ngx-cookie';
-
-library.add(faTrashAlt, faCheckSquare, faSquare);
 
 @NgModule({
   declarations: [ AppComponent,
@@ -43,4 +41,8 @@ library.add(faTrashAlt, faCheckSquare, faSquare);
   providers: [AuthService, TodoService, IsLoggedInGuard],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+  constructor(library: FaIconLibrary) {
+    library.addIcons(faTrashAlt, faSquare, faCheckSquare);
+  }
+}
