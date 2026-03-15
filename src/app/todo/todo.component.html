@@ -4,13 +4,13 @@
      <p class="lead">You've got <em>{{openItemCount}}</em> things to do</p>
   </div>
   <form (ngSubmit)="save()" role="form" [formGroup]="addForm" class="text-center">
-    <div class="form-group row">
+    <div class="mb-3 row">
       <div class="col-sm-10">
         <input type="text" [ngClass]="{'is-invalid': formErrors.item}" class="form-control form-control-lg" formControlName="item"
           placeholder="Todo!">
       </div>
       <div class="col-sm-2">
-        <button type="submit" class="btn btn-primary btn-lg btn-block" [disabled]="addForm.invalid">Add</button>
+        <button type="submit" class="btn btn-primary btn-lg w-100" [disabled]="addForm.invalid">Add</button>
       </div>
     </div>
   </form>

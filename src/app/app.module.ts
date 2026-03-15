@@ -18,7 +18,6 @@ import { IsLoggedInGuard } from './shared/guards/is-logged-in.guard';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import { CookieModule } from 'ngx-cookie';
 
 @NgModule({
   declarations: [ AppComponent,
@@ -34,7 +33,6 @@ import { CookieModule } from 'ngx-cookie';
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    CookieModule.forRoot(),
     NgbModule,
     FontAwesomeModule,
   ],

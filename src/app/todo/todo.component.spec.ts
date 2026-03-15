@@ -1,6 +1,10 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { TodoComponent } from './todo.component';
+import { TodoService } from '../shared/services/todo.service';
 
 describe('TodoComponent', () => {
   let component: TodoComponent;
@@ -8,9 +12,10 @@ describe('TodoComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ TodoComponent ]
-    })
-    .compileComponents();
+      imports: [ReactiveFormsModule, HttpClientTestingModule, FontAwesomeModule],
+      declarations: [TodoComponent],
+      providers: [TodoService],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

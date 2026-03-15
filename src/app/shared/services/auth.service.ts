@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { User } from '../classes/user';
-import { CookieService } from 'ngx-cookie';
+import { CookieService } from 'ngx-cookie-service';
 
 const requestOptions = {
   withCredentials: true,
@@ -17,15 +17,16 @@ export class AuthService {
   constructor(private http: HttpClient, private cookieService: CookieService) {}
 
   public getUser(): User {
-    return <User>this.cookieService.getObject(this.cookieKey);
+    const raw = this.cookieService.get(this.cookieKey);
+    return raw ? JSON.parse(raw) as User : null;
   }
 
   private setUser(value: User): void {
-    this.cookieService.putObject(this.cookieKey, value);
+    this.cookieService.set(this.cookieKey, JSON.stringify(value));
   }
 
   private clearUser(): void {
-    this.cookieService.remove(this.cookieKey);
+    this.cookieService.delete(this.cookieKey);
   }
 
   login(email: string, password: string): Observable<boolean | User> {
